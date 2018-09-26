@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pictory</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <%= alert %>
+    <%= notice %>
+    <% if logged? %>
+      Bienvenido <%= current_user.email %>
+      <%= link_to "Cerrar Sesión", session_path(current_user), method: :delete %>
+    <% else %>
+      el usuario no ha iniciado sesión
+      <%= link_to "Registrarse", users_sign_up_path %>
+    <% end %>
+
+    <%= yield %>
+  </body>
+</html>
